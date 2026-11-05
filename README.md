@@ -56,19 +56,16 @@ Upload a clip or paste a public YouTube video link, and let MobZilla do the dete
 <!-- Add your screenshots inside frontend/public/screenshots or docs/screenshots -->
 
 ### Homepage
-![MobZilla Homepage](docs/screenshots/homepage.png)
+![MobZilla Homepage](docs/screenshots/Homepage.png)
 
 ### Movie Identification
-![Movie Identification](docs/screenshots/identification.png)
+![Movie Identification](docs/screenshots/Identification.png)
 
 ### Identification Results
-![Movie Results](docs/screenshots/results.png)
-
-### Movie Details
-![Movie Details](docs/screenshots/movie-details.png)
+![Movie Results](docs/screenshots/Result.png)
 
 ### Watchlist
-![Watchlist](docs/screenshots/watchlist.png)
+![Watchlist](docs/screenshots/Movie_discovery.png)
 
 > Replace these images with actual screenshots of your application.
 
