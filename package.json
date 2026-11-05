@@ -1,0 +1,22 @@
+{
+  "name": "mobzilla",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-powered movie scene detective using Gemini and OMDb",
+  "scripts": {
+    "install:all": "npm --prefix Backend install && npm --prefix Frontend install",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "db:push": "npm --prefix Backend run prisma:push",
+    "dev:backend": "npm --prefix Backend run dev",
+    "dev:frontend": "npm --prefix Frontend run dev",
+    "build:backend": "npm --prefix Backend run build",
+    "build:frontend": "npm --prefix Frontend run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "check": "npm --prefix Backend run check",
+    "smoke": "npm --prefix Backend run smoke",
+    "docker:prod:build": "docker compose -f docker-compose.prod.yml build",
+    "docker:prod:up": "docker compose -f docker-compose.prod.yml up -d"
+  }
+}
+

@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String              @id @default(cuid())
+  email        String              @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime            @default(now())
+  watchlist    WatchlistItem[]
+  jobs         IdentificationJob[]
+}
+
+model IdentificationJob {
+  id         String   @id @default(cuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  sourceType String
+  status     String
+  progress   Int      @default(0)
+  stage      String   @default("queued")
+  inputLabel String?
+  sourceUrl  String?
+  localPath  String?
+  storageKey String?
+  error      String?
+  shareToken String?  @unique
+  result     Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([userId, createdAt])
+  @@index([status])
+}
+
+model WatchlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  imdbId    String
+  status    String   @default("want")
+  title     String
+  year      String?
+  posterUrl String?
+  mediaType String?
+  rating    Float?
+  overview  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, imdbId])
+  @@index([userId])
+}
+
+model MovieCache {
+  imdbId    String   @id
+  payload   Json
+  fetchedAt DateTime @default(now())
+}
+
+model LookupCache {
+  key       String   @id
+  payload   Json
+  createdAt DateTime @default(now())
+}

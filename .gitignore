@@ -1,0 +1,10 @@
+node_modules
+dist
+target
+.env
+Backend/storage/uploads/*
+Backend/storage/frames-*
+!Backend/storage/uploads/.gitkeep
+backend/storage/uploads/*
+backend/storage/frames-*
+!backend/storage/uploads/.gitkeep
